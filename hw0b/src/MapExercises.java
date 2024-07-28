@@ -1,5 +1,10 @@
+import edu.princeton.cs.algs4.In;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class MapExercises {
     /** Returns a map from every lower case letter to the number corresponding to that letter, where 'a' is
@@ -7,7 +12,11 @@ public class MapExercises {
      */
     public static Map<Character, Integer> letterToNum() {
         // TODO: Fill in this function.
-        return null;
+        Map<Character,Integer> map = new HashMap<>();
+        for(int i=0;i<26;i++){
+            map.put((char) (i+97),i+1);
+        }
+        return map;
     }
 
     /** Returns a map from the integers in the list to their squares. For example, if the input list
@@ -15,12 +24,17 @@ public class MapExercises {
      */
     public static Map<Integer, Integer> squares(List<Integer> nums) {
         // TODO: Fill in this function.
-        return null;
+        return nums.stream().collect(Collectors.toMap(integer -> integer,integer -> integer*integer));
     }
 
     /** Returns a map of the counts of all words that appear in a list of words. */
     public static Map<String, Integer> countWords(List<String> words) {
         // TODO: Fill in this function.
-        return null;
+        Map<String,Integer> map = new HashMap<>();
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word,0)+1);
+        }
+
+        return map;
     }
 }
